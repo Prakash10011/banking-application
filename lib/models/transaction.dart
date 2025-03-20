@@ -9,7 +9,7 @@ class Transaction {
     return Transaction(
       date: json['date'],
       description: json['description'],
-      amount: json['amount'],
+      amount: json['amount'].toDouble(),
     );
   }
 }

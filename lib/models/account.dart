@@ -9,7 +9,7 @@ class Account {
     return Account(
       type: json['type'],
       accountNumber: json['account_number'],
-      balance: json['balance'],
+      balance: json['balance'].toDouble(),
     );
   }
 }

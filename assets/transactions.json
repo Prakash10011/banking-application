@@ -16,12 +16,11 @@
         "description": "Deposit",
         "amount": 100.00
       },
-
       {
         "date": "2024-04-18",
         "description": "Withdrawal",
         "amount": -50.00
-      },
+      }
     ],
     "Savings": [
       {
@@ -29,7 +28,6 @@
         "description": "Withdrawal",
         "amount": -300.00
       },
-
       {
         "date": "2024-04-15",
         "description": "Interest",

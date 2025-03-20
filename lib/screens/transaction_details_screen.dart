@@ -1,26 +1,35 @@
 import 'package:flutter/material.dart';
+import 'package:appbank/models/transaction.dart'; // Import your transaction model
 import '../data_loader.dart';
-import '../models/transaction.dart';
+import 'data_loader.dart'; // Import the function to load the transactions
 
 class TransactionDetailsScreen extends StatelessWidget {
   final String accountType;
 
-  const TransactionDetailsScreen({Key? key, required this.accountType}) : super(key: key);
+  const TransactionDetailsScreen({super.key, required this.accountType});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('$accountType Transactions')),
+      appBar: AppBar(
+        title: Text('$accountType Transactions'),
+      ),
       body: FutureBuilder<Map<String, List<Transaction>>>(
-        future: loadTransactions(),
+        future: loadTransactions(), // Load transactions from the JSON file
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
+            // Show loading indicator while the data is being fetched
             return const Center(child: CircularProgressIndicator());
           }
-          if (!snapshot.hasData || snapshot.data![accountType] == null) {
-            return const Center(child: Text('No transactions found'));
+
+          if (!snapshot.hasData || snapshot.data![accountType] == null || snapshot.data![accountType]!.isEmpty) {
+            // If there are no transactions found for the account type
+            return const Center(child: Text('No transactions found.'));
           }
+
+          // Get the list of transactions for the selected account type
           final transactions = snapshot.data![accountType]!;
+
           return ListView.builder(
             itemCount: transactions.length,
             itemBuilder: (context, index) {
