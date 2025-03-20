@@ -36,3 +36,7 @@ The project uses two main assets (stored in the assets/ folder):
 
 accounts.json: Contains mock account data, including account types, account numbers, and balances.
 transactions.json: Contains mock transaction data for each account type (Chequing, Savings), including the transaction date, description, and amount.
+
+Homepage:
+![](./assets/img1.png)
+![](./assets/img2.png)
